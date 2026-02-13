@@ -17,7 +17,11 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: radial-gradient(circle at 20% 10%, #bfdcc8 0%, #8fbc9f 38%, #5f9277 100%);
+  background:
+    radial-gradient(circle at 13% 18%, rgba(255, 255, 255, 0.16) 0 18%, transparent 42%),
+    radial-gradient(circle at 84% 22%, rgba(246, 182, 201, 0.11) 0 16%, transparent 45%),
+    radial-gradient(circle at 70% 78%, rgba(255, 255, 255, 0.12) 0 14%, transparent 48%),
+    radial-gradient(circle at 20% 10%, #bfdcc8 0%, #86b697 42%, #5d8f74 100%);
 }
 
 button,
@@ -34,10 +38,31 @@ input {
   overflow: hidden;
 }
 
+.app-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background:
+    repeating-linear-gradient(
+      14deg,
+      rgba(38, 71, 55, 0.12) 0 1px,
+      transparent 1px 8px
+    ),
+    repeating-linear-gradient(
+      -18deg,
+      rgba(255, 255, 255, 0.2) 0 1px,
+      transparent 1px 11px
+    );
+  mix-blend-mode: soft-light;
+  z-index: 1;
+}
+
 .content-wrap {
   position: relative;
   width: min(100%, 900px);
-  z-index: 2;
+  z-index: 3;
 }
 
 .step-indicator {
@@ -50,7 +75,6 @@ input {
   text-shadow: 0 2px 8px rgba(31, 63, 47, 0.35);
 }
 
-
 .stage-frame {
   animation: stageFadeIn 900ms ease both;
   will-change: transform, opacity, filter;
@@ -61,10 +85,17 @@ input {
 }
 
 .card {
-  border-radius: 1.6rem;
-  background: linear-gradient(160deg, rgba(250, 255, 251, 0.98), rgba(231, 245, 236, 0.96));
-  border: 1px solid rgba(86, 130, 106, 0.32);
-  box-shadow: 0 30px 65px rgba(24, 52, 38, 0.38), 0 6px 20px rgba(24, 52, 38, 0.18);
+  border-radius: 1.45rem;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255, 255, 255, 0.72) 0 8%, transparent 36%),
+    radial-gradient(circle at 84% 70%, rgba(179, 146, 109, 0.1) 0 15%, transparent 52%),
+    linear-gradient(164deg, rgba(251, 245, 231, 0.98), rgba(239, 229, 207, 0.96));
+  border: 1px solid rgba(128, 106, 76, 0.34);
+  box-shadow:
+    0 24px 56px rgba(33, 51, 39, 0.33),
+    0 8px 22px rgba(48, 65, 52, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    inset 0 -2px 3px rgba(164, 132, 94, 0.2);
   padding: clamp(1.4rem, 3vw, 2.8rem);
   min-height: min(78vh, 760px);
   display: flex;
@@ -74,12 +105,43 @@ input {
   position: relative;
 }
 
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.28;
+  background:
+    repeating-linear-gradient(
+      6deg,
+      rgba(112, 91, 64, 0.1) 0 1px,
+      transparent 1px 10px
+    ),
+    repeating-linear-gradient(
+      -10deg,
+      rgba(255, 255, 255, 0.18) 0 1px,
+      transparent 1px 13px
+    );
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 248, 234, 0.55), inset 0 0 28px rgba(130, 105, 73, 0.16);
+}
+
 .card h1,
 .card h2,
 .card h3 {
   margin: 0;
   line-height: 1.2;
-  color: #234c37;
+  color: #3d4f31;
+  position: relative;
+  z-index: 2;
 }
 
 .card h1 {
@@ -94,15 +156,34 @@ input {
   font-size: clamp(1.25rem, 2.2vw, 1.7rem);
 }
 
+.subtitle,
+.eyebrow,
+.clue-grid,
+.digit-form,
+.button-row,
+.hint-box,
+.success-note,
+.chest-grid,
+.letter-sheet,
+.envelope,
+form,
+.card > p,
+.card > button,
+.card > article,
+.card > div {
+  position: relative;
+  z-index: 2;
+}
+
 .subtitle {
   margin: 0;
-  color: #315b47;
-  font-size: 1.1rem;
+  color: #4d5f3c;
+  font-size: 1.12rem;
 }
 
 .eyebrow {
   margin: 0;
-  color: #4f8c6d;
+  color: #657e4f;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -129,14 +210,14 @@ input {
 }
 
 .btn-primary {
-  background: #4c8768;
-  color: #f6fff9;
-  box-shadow: 0 8px 18px rgba(38, 78, 57, 0.3);
+  background: #5f7f56;
+  color: #fef9ec;
+  box-shadow: 0 8px 18px rgba(55, 79, 46, 0.3);
 }
 
 .btn-ghost {
-  background: rgba(212, 232, 219, 0.94);
-  color: #234c37;
+  background: rgba(224, 216, 193, 0.85);
+  color: #4e5f3a;
 }
 
 .button-row {
@@ -147,7 +228,7 @@ input {
 }
 
 .card-terminal {
-  border: 1px solid rgba(74, 120, 95, 0.35);
+  border: 1px solid rgba(115, 97, 68, 0.42);
 }
 
 .clue-grid {
@@ -157,14 +238,15 @@ input {
 }
 
 .clue-chip {
-  background: rgba(226, 243, 232, 0.95);
-  border: 1px solid rgba(102, 148, 122, 0.38);
+  background: rgba(236, 226, 203, 0.95);
+  border: 1px dashed rgba(132, 110, 81, 0.6);
   border-radius: 1rem;
   text-align: center;
   padding: 0.78rem;
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: 0.12em;
+  color: #4c5f39;
 }
 
 .digit-form {
@@ -181,15 +263,16 @@ input {
 .digit-slot {
   width: 3.5rem;
   height: 3.5rem;
-  border-radius: 1rem;
-  border: 1px solid rgba(95, 141, 114, 0.45);
+  border-radius: 0.85rem;
+  border: 1px solid rgba(130, 108, 77, 0.42);
   text-align: center;
   font-size: 1.6rem;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 253, 245, 0.92);
+  color: #455734;
 }
 
 .digit-slot:focus {
-  outline: 2px solid #4c8768;
+  outline: 2px solid #6e8f65;
   border-color: transparent;
 }
 
@@ -197,13 +280,13 @@ input {
   margin-top: 0.15rem;
   padding: 0.9rem;
   border-radius: 0.95rem;
-  background: rgba(246, 182, 201, 0.3);
-  color: #61424d;
-  border: 1px solid rgba(173, 112, 132, 0.3);
+  background: rgba(244, 208, 219, 0.42);
+  color: #694954;
+  border: 1px solid rgba(159, 115, 129, 0.35);
 }
 
 .success-note {
-  color: #2e684a;
+  color: #496e40;
   font-weight: 700;
   margin-top: 0.2rem;
 }
@@ -215,22 +298,22 @@ input {
 }
 
 .chest-card {
-  border: 1px solid rgba(94, 138, 113, 0.43);
-  background: rgba(237, 249, 241, 0.97);
-  border-radius: 1rem;
+  border: 1px solid rgba(121, 101, 73, 0.45);
+  background: rgba(241, 233, 213, 0.88);
+  border-radius: 0.95rem;
   padding: 1rem;
   text-align: left;
   cursor: pointer;
-  color: #2b523f;
+  color: #475a37;
 }
 
 .chest-card.active {
-  border-color: #4f8c6d;
-  background: rgba(220, 242, 228, 0.98);
+  border-color: #6f8f66;
+  background: rgba(230, 236, 206, 0.9);
 }
 
 .chest-card.solved {
-  box-shadow: 0 0 0 2px rgba(111, 175, 143, 0.42), 0 0 22px rgba(111, 175, 143, 0.52);
+  box-shadow: 0 0 0 2px rgba(111, 143, 102, 0.42), 0 0 22px rgba(111, 143, 102, 0.4);
 }
 
 .chest-label {
@@ -243,14 +326,14 @@ input {
 .envelope {
   width: min(100%, 430px);
   margin: 0 auto;
-  border: none;
+  border: 1px solid rgba(104, 129, 94, 0.46);
   border-radius: 1.2rem;
-  background: #8ec6a6;
+  background: #95bc88;
   padding: 3rem 1.1rem 1.15rem;
   display: grid;
   place-items: center;
   position: relative;
-  box-shadow: 0 10px 24px rgba(46, 88, 65, 0.26);
+  box-shadow: 0 10px 24px rgba(60, 80, 57, 0.25);
 }
 
 .envelope-flap {
@@ -259,7 +342,7 @@ input {
   left: 0;
   width: 100%;
   height: 56%;
-  background: #75b490;
+  background: #809f72;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
@@ -269,23 +352,24 @@ input {
 }
 
 .envelope-label {
-  color: #244735;
+  color: #365238;
   margin-top: 0.35rem;
   font-weight: 700;
 }
 
 .letter-sheet {
   border-radius: 1rem;
-  border: 1px solid rgba(106, 143, 121, 0.4);
-  background: rgba(255, 254, 250, 0.98);
+  border: 1px solid rgba(131, 110, 79, 0.42);
+  background: rgba(255, 250, 238, 0.95);
   padding: 1.25rem;
   margin: 0.3rem 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 245, 0.5);
 }
 
 .letter-body {
   white-space: pre-wrap;
   min-height: 12rem;
-  color: #365340;
+  color: #4a5a3d;
   font-size: 1.08rem;
 }
 
@@ -293,16 +377,16 @@ input {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  z-index: 1;
+  z-index: 2;
 }
 
 .heart {
   position: absolute;
   bottom: -34px;
   background: #f6b6c9;
-  opacity: 0.36;
+  opacity: 0.3;
   transform: rotate(-45deg);
-  filter: drop-shadow(0 5px 8px rgba(135, 43, 80, 0.25));
+  filter: drop-shadow(0 5px 8px rgba(122, 54, 82, 0.22));
   animation: floatHeart linear infinite;
 }
 
@@ -329,7 +413,7 @@ input {
 .puppy-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(246, 251, 248, 0.86);
+  background: rgba(246, 241, 225, 0.82);
   display: grid;
   place-items: center;
   border-radius: inherit;
@@ -376,7 +460,7 @@ input {
 
 @keyframes solvedPulse {
   50% {
-    box-shadow: 0 0 0 3px rgba(111, 175, 143, 0.33), 0 30px 65px rgba(24, 52, 38, 0.4);
+    box-shadow: 0 0 0 3px rgba(113, 145, 103, 0.33), 0 30px 65px rgba(43, 60, 48, 0.4);
   }
 }
 
@@ -423,7 +507,6 @@ input {
     transform: translateY(0);
   }
 }
-
 
 @keyframes stageFadeOut {
   from {
