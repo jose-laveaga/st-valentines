@@ -42,10 +42,11 @@ export function ValentineIntro() {
       <div className={`scene-stage phase-${phase}`}>
         <div className={`envelope-scene ${isDone ? 'is-hidden' : ''}`} aria-hidden="true">
           <div className="envelope">
-            <div className={`envelope-flap ${isOpening ? 'flap-open' : ''}`} />
             <div className="envelope-body" />
-            <div className="envelope-front" />
             <div className={`letter ${isOpening ? 'letter-open' : ''}`} />
+            <div className="envelope-fold envelope-fold-left" />
+            <div className="envelope-fold envelope-fold-right" />
+            <div className={`envelope-flap ${isOpening ? 'flap-open' : ''}`} />
           </div>
         </div>
 
