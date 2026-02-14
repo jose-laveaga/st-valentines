@@ -44,6 +44,7 @@ export function ValentineIntro() {
           <div className="envelope">
             <div className={`envelope-flap ${isOpening ? 'flap-open' : ''}`} />
             <div className="envelope-body" />
+            <div className="envelope-front" />
             <div className={`letter ${isOpening ? 'letter-open' : ''}`} />
           </div>
         </div>
