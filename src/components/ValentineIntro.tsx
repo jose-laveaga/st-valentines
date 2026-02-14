@@ -19,6 +19,9 @@ type ShepherdParticle = {
 const BURST_COUNT = 32
 const MAX_ACTIVE_SHEPHERDS = 110
 const GRAVITY = 980
+const TYPEWRITER_DELAY_MS = 120
+
+const LETTER_TEXT = `Querida Tabatha,\n\nAlguna vez te prometí que sin importar dónde estuvieramos o que obstaculo hubiera de por medio celebraríamos San Valentín juntos. Esta vez nos tocó estar lejos el uno del otra y eso me parte el corazón. Al mismo tiempo siento\n\nForever yours,\nTu San Valentín`
 
 export function ValentineIntro() {
   const prefersReducedMotion = useMemo(
@@ -28,6 +31,7 @@ export function ValentineIntro() {
 
   const [phase, setPhase] = useState<IntroPhase>(prefersReducedMotion ? 'done' : 'flyIn')
   const [shepherds, setShepherds] = useState<ShepherdParticle[]>([])
+  const [typedCharacters, setTypedCharacters] = useState(prefersReducedMotion ? LETTER_TEXT.length : 0)
   const burstButtonRef = useRef<HTMLButtonElement | null>(null)
   const rafRef = useRef<number | null>(null)
   const particleIdRef = useRef(0)
@@ -60,6 +64,32 @@ export function ValentineIntro() {
       }
     }
   }, [])
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setTypedCharacters(LETTER_TEXT.length)
+      return
+    }
+
+    if (phase !== 'done') {
+      setTypedCharacters(0)
+      return
+    }
+
+    setTypedCharacters(0)
+    const interval = window.setInterval(() => {
+      setTypedCharacters((current) => {
+        if (current >= LETTER_TEXT.length) {
+          window.clearInterval(interval)
+          return LETTER_TEXT.length
+        }
+
+        return current + 1
+      })
+    }, TYPEWRITER_DELAY_MS)
+
+    return () => window.clearInterval(interval)
+  }, [phase, prefersReducedMotion])
 
   const simulate = () => {
     if (rafRef.current !== null) return
@@ -197,6 +227,7 @@ export function ValentineIntro() {
   const isDone = phase === 'done'
   const isFlapOpen = phase === 'openFlap' || phase === 'pullLetter' || phase === 'done'
   const isLetterOut = phase === 'pullLetter' || phase === 'done'
+  const visibleLetter = LETTER_TEXT.slice(0, typedCharacters)
 
   return (
     <div className="intro-layer">
@@ -218,20 +249,7 @@ export function ValentineIntro() {
           <p className="card-kicker">A mi persona favorita :)</p>
           <h1>Feliz San Valentín, Tabatha 💌</h1>
           <section className="love-letter" aria-label="Love letter on worn paper">
-            <p>
-              Querida Tabatha,
-              <br />
-              <br />
-              Alguna vez te prometí que sin importar dónde estuvieramos o que obstaculo hubiera de por medio celebraríamos
-              San Valentín juntos. Esta vez nos tocó estar lejos el uno del otra y eso me parte el corazón. Al mismo
-              tiempo siento
-
-              <br />
-              <br />
-              Forever yours,
-              <br />
-              Tu San Valentín
-            </p>
+            <p className={`letter-content ${typedCharacters < LETTER_TEXT.length ? 'typing' : ''}`}>{visibleLetter}</p>
           </section>
           <button ref={burstButtonRef} className="shepherd-burst-button" onClick={launchShepherdBurst}>
             Australian shewpard
