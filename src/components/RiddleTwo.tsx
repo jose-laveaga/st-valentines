@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { PuppySadAnimation } from './PuppySadAnimation'
 
-const RIDDLE_2_SOLUTION = '?'
+const RIDDLE_2_SOLUTION = 'B'
 
 type RiddleTwoProps = {
   hint: string

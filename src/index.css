@@ -87,12 +87,12 @@ input {
 }
 
 .stage-frame {
-  animation: stageFadeIn 900ms ease both;
+  animation: stageFadeIn 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   will-change: transform, opacity, filter;
 }
 
 .stage-frame.is-transitioning {
-  animation: stageFadeOut 480ms ease forwards;
+  animation: stageFadeOut 560ms cubic-bezier(0.5, 0, 0.3, 1) forwards;
 }
 
 .card {
@@ -152,7 +152,8 @@ input {
   padding: clamp(1.4rem, 3vw, 2.8rem);
   min-height: auto;
   max-height: 140px;
-  border-radius: 1.4rem;
+  border-radius: 0.35rem;
+  clip-path: polygon(1.5% 3%, 8% 2%, 14% 3.5%, 22% 1.8%, 31% 3.6%, 40% 2.2%, 49% 3.2%, 58% 2.1%, 67% 3.4%, 77% 2.4%, 86% 3.5%, 95% 2.2%, 98.2% 8%, 97% 17%, 98.5% 27%, 96.8% 36%, 98.2% 47%, 96.6% 58%, 98.1% 68%, 96.9% 79%, 98.2% 89%, 96.7% 96.5%, 90% 98%, 82% 96.7%, 74% 98.3%, 65% 96.2%, 56% 98%, 47% 96.3%, 38% 98.2%, 29% 96.4%, 20% 97.8%, 11% 95.9%, 3% 97.5%, 1.8% 91%, 3.1% 81%, 1.7% 72%, 3.2% 61%, 1.8% 51%, 3.3% 41%, 1.8% 31%, 3.2% 21%, 1.9% 11%);
   overflow: hidden;
   opacity: 0;
   position: relative;
@@ -164,9 +165,9 @@ input {
   transform: translate(-130vw, -38vh) rotate(-22deg) scale(0.62);
   transform-origin: center;
   transition:
-    transform 920ms cubic-bezier(0.18, 0.86, 0.24, 1),
-    opacity 640ms ease,
-    max-height 940ms ease;
+    transform 1200ms cubic-bezier(0.16, 0.84, 0.24, 1),
+    opacity 760ms ease,
+    max-height 1080ms ease;
 }
 
 .intro-note h1 {
@@ -179,6 +180,7 @@ input {
 .intro-note.note-landed {
   opacity: 1;
   transform: translateY(0) rotate(-2deg) scale(1);
+  animation: noteFlyIn 1180ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
 }
 
 .intro-note.note-opened {
@@ -197,7 +199,7 @@ input {
   border-radius: 0.6rem;
   background: linear-gradient(180deg, rgba(173, 145, 102, 0.3), rgba(247, 236, 215, 0.18));
   box-shadow: inset 0 -1px 0 rgba(113, 87, 56, 0.22);
-  transition: transform 700ms ease, opacity 700ms ease;
+  transition: transform 860ms cubic-bezier(0.22, 0.78, 0.24, 1), opacity 760ms ease;
   z-index: 3;
 }
 
@@ -209,7 +211,7 @@ input {
 .intro-content {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 620ms ease, transform 620ms ease;
+  transition: opacity 760ms ease, transform 860ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .note-opened .intro-content {
@@ -589,6 +591,19 @@ form,
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+
+@keyframes noteFlyIn {
+  0% {
+    transform: translate(-130vw, -38vh) rotate(-22deg) scale(0.62);
+  }
+  68% {
+    transform: translate(2.2vw, -0.6vh) rotate(1.4deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) rotate(-2deg) scale(1);
   }
 }
 

@@ -14,8 +14,8 @@ type AppProgress = {
 }
 
 const STORAGE_KEY = 'valentine-puzzle-progress'
-const STAGE_FADE_OUT_MS = 480
-const STAGE_TRANSITION_TOTAL_MS = 980
+const STAGE_FADE_OUT_MS = 560
+const STAGE_TRANSITION_TOTAL_MS = 1200
 
 const defaultProgress: AppProgress = {
   currentStep: 1,

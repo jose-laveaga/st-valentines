@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import { PuppySadAnimation } from './PuppySadAnimation'
 
-const RIDDLE_1_SOLUTION = '???'
+const RIDDLE_1_SOLUTION = '451'
 
 type RiddleOneProps = {
   hint: string
