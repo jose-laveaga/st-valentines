@@ -264,16 +264,10 @@ body {
   height: 62%;
   background: linear-gradient(180deg, #f1ccd4, #e3adb9);
   clip-path: polygon(50% 100%, 0 0, 100% 0);
-  transform-origin: bottom center;
-  transform: translateY(105%);
-  transition: transform 0.8s ease;
   z-index: 4;
   pointer-events: none;
 }
 
-.bottom-fold-cover {
-  transform: translateY(0);
-}
 
 .love-card {
   width: min(92vw, 560px);
