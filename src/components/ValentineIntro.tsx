@@ -16,7 +16,8 @@ type ShepherdParticle = {
   life: number
 }
 
-const BURST_COUNT = 65
+const BURST_COUNT = 32
+const MAX_ACTIVE_SHEPHERDS = 110
 const GRAVITY = 980
 
 export function ValentineIntro() {
@@ -187,7 +188,8 @@ export function ValentineIntro() {
       }
     })
 
-    shepherdsRef.current = [...shepherdsRef.current, ...burst]
+    const merged = [...shepherdsRef.current, ...burst]
+    shepherdsRef.current = merged.slice(-MAX_ACTIVE_SHEPHERDS)
     setShepherds(shepherdsRef.current)
     simulate()
   }
