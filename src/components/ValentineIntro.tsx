@@ -57,13 +57,24 @@ export function ValentineIntro() {
         </div>
 
         <article className={`love-card ${isDone ? 'card-visible' : ''}`}>
-          <p className="card-kicker">For my favorite person</p>
-          <h1>Happy Valentine&apos;s Day 💌</h1>
-          <p>
-            You make ordinary days feel magical. Thank you for your warmth, kindness, and the
-            little moments that mean everything.
-          </p>
-          <button className="card-button">Open a little surprise</button>
+          <p className="card-kicker">A mi persona favorita :)</p>
+          <h1>Feliz San Valentín, Tabatha 💌</h1>
+          <section className="love-letter" aria-label="Love letter on worn paper">
+            <p>
+              Querida Tabatha,
+              <br />
+              <br />
+                Alguna vez te prometí que sin importar dónde estuvieramos o que obstaculo hubiera de por medio celebraríamos
+                San Valentín juntos. Esta vez nos tocó estar lejos el uno del otra y eso me parte el corazón. Al mismo
+                tiempo siento
+
+              <br />
+              <br />
+              Forever yours,
+              <br />
+              Tu San Valentín
+            </p>
+          </section>
         </article>
       </div>
     </div>
