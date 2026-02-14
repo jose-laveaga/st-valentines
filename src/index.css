@@ -76,7 +76,7 @@ body {
   bottom: -10%;
   display: block;
   transform: rotate(-45deg);
-  background: rgba(255, 218, 226, 0.52);
+  background: rgba(255, 218, 226, 0.72);
   animation: heart-rise linear infinite;
   border-radius: 4px;
 }
@@ -102,12 +102,12 @@ body {
 }
 
 .heart:nth-child(3n) {
-  opacity: 0.45;
+  opacity: 0.62;
   filter: blur(1px);
 }
 
 .heart:nth-child(4n) {
-  opacity: 0.7;
+  opacity: 0.86;
 }
 
 .intro-layer {
@@ -118,24 +118,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
-}
-
-.skip-button {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 0.45rem 0.95rem;
-  font-weight: 600;
-  backdrop-filter: blur(3px);
-}
-
-.skip-button:focus-visible {
-  outline: 3px solid #f4d6de;
-  outline-offset: 2px;
 }
 
 .scene-stage {
@@ -361,11 +343,15 @@ body {
     transform: translate3d(0, 0, 0) rotate(-45deg);
     opacity: 0;
   }
-  12% {
-    opacity: 0.55;
+  10% {
+    opacity: 0.72;
   }
   50% {
     transform: translate3d(16px, -54vh, 0) rotate(-33deg);
+    opacity: 0.72;
+  }
+  78% {
+    opacity: 0.72;
   }
   100% {
     transform: translate3d(-14px, -120vh, 0) rotate(-57deg);

@@ -200,12 +200,6 @@ export function ValentineIntro() {
 
   return (
     <div className="intro-layer">
-      {!isDone && (
-        <button className="skip-button" onClick={() => setPhase('done')}>
-          Skip animation
-        </button>
-      )}
-
       <div className={`scene-stage phase-${phase}`}>
         <div className={`envelope-scene ${isDone ? 'is-hidden' : ''}`} aria-hidden="true">
           <div className="envelope">
