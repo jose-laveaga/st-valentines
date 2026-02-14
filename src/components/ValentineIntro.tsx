@@ -19,7 +19,7 @@ type ShepherdParticle = {
 const BURST_COUNT = 32
 const MAX_ACTIVE_SHEPHERDS = 110
 const GRAVITY = 980
-const TYPEWRITER_DELAY_MS = 62
+const TYPEWRITER_DELAY_MS = 120
 
 const LETTER_TEXT = `Querida Tabatha,\n\nAlguna vez te prometí que sin importar dónde estuvieramos o que obstaculo hubiera de por medio celebraríamos San Valentín juntos. Esta vez nos tocó estar lejos el uno del otra y eso me parte el corazón. Al mismo tiempo siento\n\nForever yours,\nTu San Valentín`
 
