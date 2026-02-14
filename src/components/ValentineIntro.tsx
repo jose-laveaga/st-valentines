@@ -20,7 +20,7 @@ export function ValentineIntro() {
     } else if (phase === 'settle') {
       timers.push(window.setTimeout(() => setPhase('open'), 650))
     } else if (phase === 'open') {
-      timers.push(window.setTimeout(() => setPhase('done'), 1450))
+      timers.push(window.setTimeout(() => setPhase('done'), 1800))
     }
 
     return () => {

@@ -36,19 +36,32 @@ body {
 }
 
 .texture-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-  background-image:
-    repeating-linear-gradient(38deg, rgba(255, 255, 255, 0.2) 0 2px, transparent 2px 6px),
-    repeating-radial-gradient(circle at 20% 20%, rgba(32, 57, 34, 0.24) 0 1px, transparent 1px 3px),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.07));
-  background-size: auto, 130px 130px, auto;
-  mix-blend-mode: soft-light;
-  opacity: 0.14;
-  filter: contrast(120%) brightness(110%);
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+
+    background-image:
+            repeating-linear-gradient(38deg, rgba(255, 255, 255, 0.2) 0 2px, transparent 2px 6px),
+            repeating-radial-gradient(
+                    circle at 20% 20%,
+                    rgba(32, 57, 34, 0.24) 0px,
+                    rgba(32, 57, 34, 0.24) 1px,
+                    transparent 1px,
+                    transparent 3px
+            ),
+
+            linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.07));
+    background-size:
+            6px 6px,
+            130px 130px,
+            100% 100%;
+
+    mix-blend-mode: soft-light;
+    opacity: 0.14;
+    filter: contrast(120%) brightness(110%);
 }
+
 
 .hearts-layer {
   position: absolute;
@@ -163,69 +176,78 @@ body {
 
 .envelope-body {
   position: absolute;
-  inset: 0;
+  inset: auto 0 0;
+  height: 100%;
   border-radius: 12px;
   background: linear-gradient(165deg, #f5d8dc, #edc3cb);
   box-shadow: 0 18px 26px rgba(26, 36, 26, 0.25);
+  z-index: 2;
 }
 
-.envelope-body::before,
-.envelope-body::after {
-  content: '';
+.envelope-fold {
   position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(170deg, #1f1f1f, #dca3b1);
+  z-index: 8;
 }
 
-.envelope-body::before {
-  left: 0;
-  bottom: 0;
-  border-width: 84px 0 0 170px;
-  border-color: transparent transparent transparent rgba(255, 255, 255, 0.2);
+.envelope-fold-left {
+    left: 100px;
+    clip-path: polygon(
+            0 0,        /* top-left */
+            100% 50%,   /* center seam (mid-height) */
+            0 100%      /* bottom-left */
+    );
 }
 
-.envelope-body::after {
-  right: 0;
-  bottom: 0;
-  border-width: 84px 170px 0 0;
-  border-color: rgba(0, 0, 0, 0.08) transparent transparent transparent;
+/* Right half fold: right edge is the base, apex points to center seam */
+.envelope-fold-right {
+    right: 0;
+    clip-path: polygon(
+            100% 0,     /* top-right */
+            100% 100%,  /* bottom-right */
+            0 50%       /* center seam (mid-height) */
+    );
 }
 
 .envelope-flap {
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-left: 170px solid transparent;
-  border-right: 170px solid transparent;
-  border-top: 110px solid #f7e3e6;
-  transform-origin: top;
-  transform: translateX(-50%) rotateX(0deg);
+  left: 0;
+  width: 100%;
+  height: 56%;
+  background: #f7e3e6;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top center;
+  transform: rotateX(0deg);
   transition: transform 0.9s ease-in-out;
   z-index: 4;
 }
 
 .flap-open {
-  transform: translateX(-50%) rotateX(175deg);
+  transform: rotateX(180deg);
 }
 
 .letter {
   position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 12%;
-  height: 78%;
-  border-radius: 18px;
+  left: 10%;
+  right: 10%;
+  bottom: 70%;
+  height: 74%;
+  border-radius: 14px;
   background: #fffdf7;
   box-shadow: 0 12px 20px rgba(23, 23, 23, 0.15);
-  transform: translateY(22%) scaleY(0.85);
-  transition: transform 1s ease;
+  transform: translateY(70%) scaleY(0.85);
+  transform-origin: bottom;
+  transition: transform 2s ease;
+  z-index: 1;
 }
 
 .letter-open {
-  transform: translateY(-40%) scaleY(1.08);
+  transform: translateY(-38%) scaleY(1.05);
+  z-index: 5;
 }
 
 .love-card {
@@ -334,22 +356,6 @@ body {
   }
   to {
     transform: translate(0, 0) scale(1);
-  }
-}
-
-@media (max-width: 480px) {
-  .envelope-body::before {
-    border-width: 70px 0 0 130px;
-  }
-
-  .envelope-body::after {
-    border-width: 70px 130px 0 0;
-  }
-
-  .envelope-flap {
-    border-left-width: 130px;
-    border-right-width: 130px;
-    border-top-width: 86px;
   }
 }
 
