@@ -21,7 +21,7 @@ const MAX_ACTIVE_SHEPHERDS = 110
 const GRAVITY = 980
 const TYPEWRITER_DELAY_MS = 120
 
-const LETTER_TEXT = `Querida Tabatha,\n\nAlguna vez te prometí que sin importar dónde estuvieramos o que obstaculo hubiera de por medio celebraríamos San Valentín juntos. Esta vez nos tocó estar lejos el uno del otra y eso me parte el corazón. Al mismo tiempo siento\n\nForever yours,\nTu San Valentín`
+const LETTER_TEXT = `Querida Tabatha,\n\nAlguna vez te prometí que sin importar dónde estuvieramos o que obstaculo hubiera de por medio celebraríamos San Valentín juntos. Esta vez nos tocó estar lejos el uno del otra y eso me parte el corazón. Al mismo tiempo siento\n\nSiempre tuyo,\nTu San Valentín`
 
 export function ValentineIntro() {
   const prefersReducedMotion = useMemo(
@@ -106,7 +106,7 @@ export function ValentineIntro() {
       const width = window.innerWidth
       const height = window.innerHeight
 
-      let particles = shepherdsRef.current
+      const particles = shepherdsRef.current
         .map((particle) => {
           const next = { ...particle }
           next.age += dt
