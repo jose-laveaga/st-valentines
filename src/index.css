@@ -331,6 +331,18 @@ body {
   text-align: left;
   position: relative;
   z-index: 1;
+  white-space: pre-line;
+}
+
+.letter-content.typing::after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: typewriter-caret 0.9s steps(1, end) infinite;
 }
 
 .card-kicker {
@@ -410,12 +422,23 @@ body {
   }
 }
 
+
+@keyframes typewriter-caret {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .heart,
   .envelope-scene,
   .envelope-flap,
   .letter,
-  .love-card {
+  .love-card,
+  .letter-content.typing::after {
     animation: none !important;
     transition: none !important;
   }
