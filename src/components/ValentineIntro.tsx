@@ -47,7 +47,10 @@ export function ValentineIntro() {
           <div className="envelope">
             <div className={`envelope-flap ${isFlapOpen ? 'flap-open' : ''}`} />
             <div className="envelope-body" />
-            <div className={`letter ${isLetterOut ? 'letter-open' : ''}`} />
+            <div className={`letter ${isLetterOut ? 'letter-open' : ''}`}>
+              <div className="letter-lines" />
+            </div>
+            <div className={`envelope-fold-bottom ${isLetterOut ? 'bottom-fold-cover' : ''}`} />
             <div className="envelope-fold envelope-fold-left" />
             <div className="envelope-fold envelope-fold-right" />
           </div>
