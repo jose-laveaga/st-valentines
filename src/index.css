@@ -164,7 +164,8 @@ body {
   animation: envelope-settle 0.65s ease-out both;
 }
 
-.phase-open .envelope-scene {
+.phase-openFlap .envelope-scene,
+.phase-pullLetter .envelope-scene {
   animation: envelope-idle 0.3s linear both;
 }
 
@@ -187,29 +188,22 @@ body {
 .envelope-fold {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 50%;
   height: 100%;
-  background: linear-gradient(170deg, #1f1f1f, #dca3b1);
-  z-index: 8;
+  background: linear-gradient(165deg, #efc9d1, #dfa8b6);
+  opacity: 0.9;
+  z-index: 6;
+  pointer-events: none;
 }
 
 .envelope-fold-left {
-    left: 100px;
-    clip-path: polygon(
-            0 0,        /* top-left */
-            100% 50%,   /* center seam (mid-height) */
-            0 100%      /* bottom-left */
-    );
+  left: 0;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 
-/* Right half fold: right edge is the base, apex points to center seam */
 .envelope-fold-right {
-    right: 0;
-    clip-path: polygon(
-            100% 0,     /* top-right */
-            100% 100%,  /* bottom-right */
-            0 50%       /* center seam (mid-height) */
-    );
+  right: 0;
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
 }
 
 .envelope-flap {
@@ -242,7 +236,7 @@ body {
   transform: translateY(70%) scaleY(0.85);
   transform-origin: bottom;
   transition: transform 2s ease;
-  z-index: 1;
+  z-index: 3;
 }
 
 .letter-open {

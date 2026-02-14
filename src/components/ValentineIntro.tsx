@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-type IntroPhase = 'flyIn' | 'settle' | 'open' | 'done'
+type IntroPhase = 'flyIn' | 'settle' | 'openFlap' | 'pullLetter' | 'done'
 
 export function ValentineIntro() {
   const prefersReducedMotion = useMemo(
@@ -18,9 +18,11 @@ export function ValentineIntro() {
     if (phase === 'flyIn') {
       timers.push(window.setTimeout(() => setPhase('settle'), 3000))
     } else if (phase === 'settle') {
-      timers.push(window.setTimeout(() => setPhase('open'), 650))
-    } else if (phase === 'open') {
-      timers.push(window.setTimeout(() => setPhase('done'), 1800))
+      timers.push(window.setTimeout(() => setPhase('openFlap'), 650))
+    } else if (phase === 'openFlap') {
+      timers.push(window.setTimeout(() => setPhase('pullLetter'), 1000))
+    } else if (phase === 'pullLetter') {
+      timers.push(window.setTimeout(() => setPhase('done'), 1700))
     }
 
     return () => {
@@ -29,7 +31,8 @@ export function ValentineIntro() {
   }, [phase])
 
   const isDone = phase === 'done'
-  const isOpening = phase === 'open' || phase === 'done'
+  const isFlapOpen = phase === 'openFlap' || phase === 'pullLetter' || phase === 'done'
+  const isLetterOut = phase === 'pullLetter' || phase === 'done'
 
   return (
     <div className="intro-layer">
@@ -42,9 +45,11 @@ export function ValentineIntro() {
       <div className={`scene-stage phase-${phase}`}>
         <div className={`envelope-scene ${isDone ? 'is-hidden' : ''}`} aria-hidden="true">
           <div className="envelope">
-            <div className={`envelope-flap ${isOpening ? 'flap-open' : ''}`} />
+            <div className={`envelope-flap ${isFlapOpen ? 'flap-open' : ''}`} />
             <div className="envelope-body" />
-            <div className={`letter ${isOpening ? 'letter-open' : ''}`} />
+            <div className={`letter ${isLetterOut ? 'letter-open' : ''}`} />
+            <div className="envelope-fold envelope-fold-left" />
+            <div className="envelope-fold envelope-fold-right" />
           </div>
         </div>
 
