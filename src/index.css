@@ -419,3 +419,46 @@ body {
     transition: none !important;
   }
 }
+
+.shepherd-burst-button {
+  margin-top: 1.2rem;
+  border: 1px solid rgba(79, 58, 35, 0.4);
+  background: linear-gradient(180deg, #fff7e4, #f3dfbe);
+  color: #4f3621;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+
+.shepherd-burst-button:hover {
+  transform: translateY(-1px);
+}
+
+.shepherd-burst-button:focus-visible {
+  outline: 3px solid #f0cfa0;
+  outline-offset: 2px;
+}
+
+.shepherd-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shepherd-particle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: contain;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.25));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shepherd-burst-button {
+    transition: none !important;
+  }
+}
