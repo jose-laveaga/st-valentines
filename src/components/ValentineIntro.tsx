@@ -21,7 +21,16 @@ const MAX_ACTIVE_SHEPHERDS = 110
 const GRAVITY = 980
 const TYPEWRITER_DELAY_MS = 120
 
-const LETTER_TEXT = `Querida Tabatha,\n\nAlguna vez te prometí que sin importar dónde estuvieramos o que obstaculo hubiera de por medio celebraríamos San Valentín juntos. Esta vez nos tocó estar lejos el uno del otra y eso me parte el corazón. Al mismo tiempo siento\n\nSiempre tuyo,\nTu San Valentín`
+const LETTER_TEXT = `Querida Tabatha,\n
+
+Alguna vez te prometí que, sin importar en qué situación estuviéramos, haríamos algo para celebrar este día juntos. Tal vez en el futuro habrá obstáculos que tendremos que enfrentar. Hoy estamos lejos el uno del otro y, desde el momento en que te vi irte y te di ese último abrazo en el aeropuerto, una parte de mi corazón se quedó incompleta.
+
+Antes de ti, nunca celebré este día de ninguna forma; al contrario, me parecía cursi y ridículo. Hoy mi perspectiva es muy distinta. Me siento triste de no tenerte a mi lado, de no poder decirte “te amo” en persona y, al mismo tiempo, soy tan feliz de saber que tú existes en mi vida, que hay alguien a quien amo tanto que le entregué mi corazón entero.
+
+Hoy celebro este día porque existes tú en mi vida. Celebro este día porque, por ti, llegué a experimentar los sentimientos más intensos que pudiera haber imaginado. Este día, para mí, no solo es del amor, sino de ti. Tú me mostraste lo que era amar de una forma desinteresada. Te amo, Tabatha.
+
+Gracias por todo lo que has hecho por mí. Gracias por todo tu amor. Gracias por haber venido a visitarme. Gracias por ser tan amorosa y gentil conmigo. Gracias por existir.
+\n\nSiempre tuyo,\nTu San Valentín, José`
 
 export function ValentineIntro() {
   const prefersReducedMotion = useMemo(
