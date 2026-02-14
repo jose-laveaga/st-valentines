@@ -2,7 +2,7 @@ const hearts = Array.from({ length: 18 }, (_, index) => ({
   id: index,
   left: `${Math.random() * 100}%`,
   delay: `${Math.random() * 10}s`,
-  duration: `${9 + Math.random() * 8}s`,
+  duration: `${16 + Math.random() * 12}s`,
   size: 14 + Math.round(Math.random() * 22),
 }))
 

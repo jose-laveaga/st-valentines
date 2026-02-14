@@ -72,13 +72,14 @@ body {
 }
 
 .heart {
-  position: absolute;
-  bottom: -10%;
-  display: block;
-  transform: rotate(-45deg);
-  background: rgba(255, 218, 226, 0.52);
-  animation: heart-rise linear infinite;
-  border-radius: 4px;
+    position: absolute;
+    bottom: -10%;
+    display: block;
+    transform: rotate(-45deg);
+    background: rgba(255, 218, 226, 1); /* fully opaque */
+    opacity: 1;                          /* fully opaque */
+    animation: heart-rise linear infinite;
+    border-radius: 4px;
 }
 
 .heart::before,
@@ -102,12 +103,12 @@ body {
 }
 
 .heart:nth-child(3n) {
-  opacity: 0.45;
-  filter: blur(1px);
+    opacity: 1;
+    filter: blur(1px);
 }
 
-.heart:nth-child(4n) {
-  opacity: 0.7;
+.heart:nth-child(5n) {
+    opacity: 1;
 }
 
 .intro-layer {
@@ -118,24 +119,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
-}
-
-.skip-button {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 0.45rem 0.95rem;
-  font-weight: 600;
-  backdrop-filter: blur(3px);
-}
-
-.skip-button:focus-visible {
-  outline: 3px solid #f4d6de;
-  outline-offset: 2px;
 }
 
 .scene-stage {
@@ -295,22 +278,36 @@ body {
 }
 
 .love-letter {
-  margin: 1rem auto 0;
-  width: min(100%, 420px);
-  background:
-    radial-gradient(circle at 12% 14%, rgba(255, 255, 255, 0.62) 0 24%, transparent 48%),
-    radial-gradient(circle at 83% 80%, rgba(162, 118, 69, 0.16) 0 26%, transparent 52%),
-    linear-gradient(180deg, #f4e2c6 0%, #ead2ae 58%, #e2c49a 100%);
-  color: #3c2d1e;
-  border-radius: 14px 22px 18px 24px / 18px 14px 24px 20px;
-  padding: 1.3rem 1.25rem;
-  box-shadow:
-    inset 0 0 0 1px rgba(129, 89, 43, 0.18),
-    inset 0 16px 30px rgba(255, 255, 255, 0.15),
-    0 10px 24px rgba(39, 27, 14, 0.2);
-  position: relative;
-  clip-path: polygon(1% 4%, 8% 1%, 21% 3%, 31% 1%, 45% 3%, 56% 1%, 66% 4%, 78% 1%, 92% 5%, 98% 12%, 95% 26%, 99% 38%, 96% 51%, 99% 66%, 95% 82%, 97% 93%, 91% 98%, 76% 96%, 64% 99%, 50% 96%, 36% 99%, 23% 96%, 11% 98%, 3% 92%, 5% 74%, 1% 62%, 4% 45%, 1% 28%, 5% 16%);
+    margin: 1rem auto 0;
+    width: min(100%, 420px);
+    background:
+            radial-gradient(circle at 12% 14%,
+            rgba(255, 255, 255, 0.62) 0%,
+            rgba(255, 255, 255, 0.62) 24%,
+            transparent 48%
+            ),
+            radial-gradient(circle at 83% 80%,
+            rgba(162, 118, 69, 0.16) 0%,
+            rgba(162, 118, 69, 0.16) 26%,
+            transparent 52%
+            ),
+            linear-gradient(180deg, #f4e2c6 0%, #ead2ae 58%, #e2c49a 100%);
+    color: #3c2d1e;
+    border-radius: 14px 22px 18px 24px / 18px 14px 24px 20px;
+    padding: 1.3rem 1.25rem;
+    box-shadow:
+            inset 0 0 0 1px rgba(129, 89, 43, 0.18),
+            inset 0 16px 30px rgba(255, 255, 255, 0.15),
+            0 10px 24px rgba(39, 27, 14, 0.2);
+    position: relative;
+    clip-path: polygon(
+            1% 4%, 8% 1%, 21% 3%, 31% 1%, 45% 3%, 56% 1%, 66% 4%, 78% 1%, 92% 5%,
+            98% 12%, 95% 26%, 99% 38%, 96% 51%, 99% 66%, 95% 82%, 97% 93%, 91% 98%,
+            76% 96%, 64% 99%, 50% 96%, 36% 99%, 23% 96%, 11% 98%, 3% 92%, 5% 74%,
+            1% 62%, 4% 45%, 1% 28%, 5% 16%
+    );
 }
+
 
 .love-letter::before {
   content: '';
@@ -361,11 +358,15 @@ body {
     transform: translate3d(0, 0, 0) rotate(-45deg);
     opacity: 0;
   }
-  12% {
-    opacity: 0.55;
+  10% {
+    opacity: 0.72;
   }
   50% {
     transform: translate3d(16px, -54vh, 0) rotate(-33deg);
+    opacity: 0.72;
+  }
+  78% {
+    opacity: 0.72;
   }
   100% {
     transform: translate3d(-14px, -120vh, 0) rotate(-57deg);
@@ -416,6 +417,49 @@ body {
   .letter,
   .love-card {
     animation: none !important;
+    transition: none !important;
+  }
+}
+
+.shepherd-burst-button {
+  margin-top: 1.2rem;
+  border: 1px solid rgba(79, 58, 35, 0.4);
+  background: linear-gradient(180deg, #fff7e4, #f3dfbe);
+  color: #4f3621;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+
+.shepherd-burst-button:hover {
+  transform: translateY(-1px);
+}
+
+.shepherd-burst-button:focus-visible {
+  outline: 3px solid #f0cfa0;
+  outline-offset: 2px;
+}
+
+.shepherd-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shepherd-particle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: contain;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.25));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shepherd-burst-button {
     transition: none !important;
   }
 }
