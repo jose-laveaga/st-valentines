@@ -72,13 +72,14 @@ body {
 }
 
 .heart {
-  position: absolute;
-  bottom: -10%;
-  display: block;
-  transform: rotate(-45deg);
-  background: rgba(255, 218, 226, 0.72);
-  animation: heart-rise linear infinite;
-  border-radius: 4px;
+    position: absolute;
+    bottom: -10%;
+    display: block;
+    transform: rotate(-45deg);
+    background: rgba(255, 218, 226, 1); /* fully opaque */
+    opacity: 1;                          /* fully opaque */
+    animation: heart-rise linear infinite;
+    border-radius: 4px;
 }
 
 .heart::before,
@@ -102,12 +103,12 @@ body {
 }
 
 .heart:nth-child(3n) {
-  opacity: 0.62;
-  filter: blur(1px);
+    opacity: 1;
+    filter: blur(1px);
 }
 
-.heart:nth-child(4n) {
-  opacity: 0.86;
+.heart:nth-child(5n) {
+    opacity: 1;
 }
 
 .intro-layer {
@@ -277,22 +278,36 @@ body {
 }
 
 .love-letter {
-  margin: 1rem auto 0;
-  width: min(100%, 420px);
-  background:
-    radial-gradient(circle at 12% 14%, rgba(255, 255, 255, 0.62) 0 24%, transparent 48%),
-    radial-gradient(circle at 83% 80%, rgba(162, 118, 69, 0.16) 0 26%, transparent 52%),
-    linear-gradient(180deg, #f4e2c6 0%, #ead2ae 58%, #e2c49a 100%);
-  color: #3c2d1e;
-  border-radius: 14px 22px 18px 24px / 18px 14px 24px 20px;
-  padding: 1.3rem 1.25rem;
-  box-shadow:
-    inset 0 0 0 1px rgba(129, 89, 43, 0.18),
-    inset 0 16px 30px rgba(255, 255, 255, 0.15),
-    0 10px 24px rgba(39, 27, 14, 0.2);
-  position: relative;
-  clip-path: polygon(1% 4%, 8% 1%, 21% 3%, 31% 1%, 45% 3%, 56% 1%, 66% 4%, 78% 1%, 92% 5%, 98% 12%, 95% 26%, 99% 38%, 96% 51%, 99% 66%, 95% 82%, 97% 93%, 91% 98%, 76% 96%, 64% 99%, 50% 96%, 36% 99%, 23% 96%, 11% 98%, 3% 92%, 5% 74%, 1% 62%, 4% 45%, 1% 28%, 5% 16%);
+    margin: 1rem auto 0;
+    width: min(100%, 420px);
+    background:
+            radial-gradient(circle at 12% 14%,
+            rgba(255, 255, 255, 0.62) 0%,
+            rgba(255, 255, 255, 0.62) 24%,
+            transparent 48%
+            ),
+            radial-gradient(circle at 83% 80%,
+            rgba(162, 118, 69, 0.16) 0%,
+            rgba(162, 118, 69, 0.16) 26%,
+            transparent 52%
+            ),
+            linear-gradient(180deg, #f4e2c6 0%, #ead2ae 58%, #e2c49a 100%);
+    color: #3c2d1e;
+    border-radius: 14px 22px 18px 24px / 18px 14px 24px 20px;
+    padding: 1.3rem 1.25rem;
+    box-shadow:
+            inset 0 0 0 1px rgba(129, 89, 43, 0.18),
+            inset 0 16px 30px rgba(255, 255, 255, 0.15),
+            0 10px 24px rgba(39, 27, 14, 0.2);
+    position: relative;
+    clip-path: polygon(
+            1% 4%, 8% 1%, 21% 3%, 31% 1%, 45% 3%, 56% 1%, 66% 4%, 78% 1%, 92% 5%,
+            98% 12%, 95% 26%, 99% 38%, 96% 51%, 99% 66%, 95% 82%, 97% 93%, 91% 98%,
+            76% 96%, 64% 99%, 50% 96%, 36% 99%, 23% 96%, 11% 98%, 3% 92%, 5% 74%,
+            1% 62%, 4% 45%, 1% 28%, 5% 16%
+    );
 }
+
 
 .love-letter::before {
   content: '';
