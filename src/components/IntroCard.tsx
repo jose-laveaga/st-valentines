@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import type { CSSProperties } from 'react'
+import wornPaper from '../assets/worn-paper.svg'
 
 type IntroCardProps = {
   onStart: () => void
@@ -24,7 +26,10 @@ export function IntroCard({ onStart }: IntroCardProps) {
   }, [])
 
   return (
-    <section className={`card intro-note ${landed ? 'note-landed' : ''} ${opened ? 'note-opened' : ''}`}>
+    <section
+      className={`intro-note ${landed ? 'note-landed' : ''} ${opened ? 'note-opened' : ''}`}
+      style={{ '--paper-texture': `url(${wornPaper})` } as CSSProperties}
+    >
       <span className="note-flap" aria-hidden="true" />
       <div className="intro-content">
         <p className="eyebrow">Valentine Storybook</p>

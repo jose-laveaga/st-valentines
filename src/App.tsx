@@ -23,21 +23,14 @@ const defaultProgress: AppProgress = {
   riddle2Solved: false,
 }
 
-function loadProgress(): AppProgress {
-  const raw = window.localStorage.getItem(STORAGE_KEY)
-  if (!raw) return defaultProgress
-
-  try {
-    return { ...defaultProgress, ...JSON.parse(raw) }
-  } catch {
-    return defaultProgress
-  }
-}
-
 function App() {
-  const [progress, setProgress] = useState<AppProgress>(() => loadProgress())
+  const [progress, setProgress] = useState<AppProgress>(defaultProgress)
   const [displayStep, setDisplayStep] = useState<AppProgress['currentStep']>(progress.currentStep)
   const [isStageTransitioning, setIsStageTransitioning] = useState(false)
+
+  useEffect(() => {
+    window.localStorage.removeItem(STORAGE_KEY)
+  }, [])
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
