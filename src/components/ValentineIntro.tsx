@@ -30,6 +30,7 @@ export function ValentineIntro() {
   const burstButtonRef = useRef<HTMLButtonElement | null>(null)
   const rafRef = useRef<number | null>(null)
   const particleIdRef = useRef(0)
+  const shepherdsRef = useRef<ShepherdParticle[]>([])
 
   useEffect(() => {
     if (phase === 'done') return
@@ -59,13 +60,9 @@ export function ValentineIntro() {
     }
   }, [])
 
-  const simulate = (initial: ShepherdParticle[]) => {
-    if (rafRef.current !== null) {
-      window.cancelAnimationFrame(rafRef.current)
-      rafRef.current = null
-    }
+  const simulate = () => {
+    if (rafRef.current !== null) return
 
-    let particles = initial
     let previousTime: number | null = null
 
     const tick = (time: number) => {
@@ -78,7 +75,7 @@ export function ValentineIntro() {
       const width = window.innerWidth
       const height = window.innerHeight
 
-      particles = particles
+      let particles = shepherdsRef.current
         .map((particle) => {
           const next = { ...particle }
           next.age += dt
@@ -152,6 +149,7 @@ export function ValentineIntro() {
         }
       }
 
+      shepherdsRef.current = particles
       setShepherds(particles)
 
       if (particles.length > 0) {
@@ -189,8 +187,9 @@ export function ValentineIntro() {
       }
     })
 
-    setShepherds(burst)
-    simulate(burst)
+    shepherdsRef.current = [...shepherdsRef.current, ...burst]
+    setShepherds(shepherdsRef.current)
+    simulate()
   }
 
   const isDone = phase === 'done'
